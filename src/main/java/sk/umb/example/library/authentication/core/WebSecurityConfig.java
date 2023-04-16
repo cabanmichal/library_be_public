@@ -25,7 +25,6 @@ public class WebSecurityConfig {
         this.authenticationService = authenticationService;
     }
 
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http.csrf().disable()
@@ -48,4 +47,3 @@ public class WebSecurityConfig {
                                  "/swagger-resources/**");
     }
 }
-
