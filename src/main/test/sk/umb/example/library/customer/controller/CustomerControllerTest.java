@@ -50,6 +50,18 @@ class CustomerControllerTest {
     }
 
     @Test
+    public void searchCustomerEmpty() throws Exception {
+        when(customerService.getAllCustomers())
+                .thenReturn(List.of());
+
+        mockMvc.perform(
+                        get("/api/customers"))
+                .andExpect(status().isOk());
+
+        verify(customerService, times(1)).getAllCustomers();
+    }
+
+    @Test
     public void getCustomerByIdFound() throws Exception {
         CustomerDetailDto customerDetailDto = new CustomerDetailDto();
         customerDetailDto.setFirstName("John");
