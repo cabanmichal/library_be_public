@@ -35,7 +35,6 @@ class CustomerControllerTest {
     @Test
     public void searchCustomerAll() throws Exception {
         CustomerDetailDto customerDetailDto = new CustomerDetailDto();
-
         customerDetailDto.setFirstName("John");
 
         when(customerService.getAllCustomers())
@@ -51,7 +50,27 @@ class CustomerControllerTest {
     }
 
     @Test
-    public void getCustomerById() throws Exception {
+    public void getCustomerByIdFound() throws Exception {
+        CustomerDetailDto customerDetailDto = new CustomerDetailDto();
+        customerDetailDto.setFirstName("John");
+        customerDetailDto.setLastName("Woody");
+
+        when(customerService.getCustomerById(any()))
+                .thenReturn(customerDetailDto);
+
+        mockMvc.perform(
+                        get("/api/customers/1"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.firstName",
+                        Matchers.equalTo("John")))
+                .andExpect(jsonPath("$.lastName",
+                        Matchers.equalTo("Woody")));
+
+        verify(customerService, times(1)).getCustomerById(any());
+    }
+
+    @Test
+    public void getCustomerByIdNotFound() throws Exception {
         when(customerService.getCustomerById(any()))
                 .thenThrow(new LibraryApplicationException("Customer not found. ID: 1"));
 
