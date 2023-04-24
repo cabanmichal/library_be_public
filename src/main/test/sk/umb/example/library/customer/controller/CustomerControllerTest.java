@@ -38,7 +38,7 @@ class CustomerControllerTest {
     private static ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    @WithMockUser(roles="USER")
+    @WithMockUser
     public void searchCustomer() throws Exception {
         CustomerDetailDto customerDetailDto = new CustomerDetailDto();
 
@@ -50,7 +50,8 @@ class CustomerControllerTest {
         var result = mockMvc.perform(
                 get("/api/customers"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.[0].firstName", Matchers.equalTo("John")));
+                .andExpect(jsonPath("$.[0].firstName",
+                                    Matchers.equalTo("John")));
 
         verify(customerService, times(1)).getAllCustomers();
     }
