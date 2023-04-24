@@ -11,6 +11,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import sk.umb.example.library.customer.service.CustomerDetailDto;
 import sk.umb.example.library.customer.service.CustomerService;
+import sk.umb.example.library.exception.LibraryApplicationException;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ class CustomerControllerTest {
     private static ObjectMapper mapper = new ObjectMapper();
 
     @Test
-    public void searchCustomer() throws Exception {
+    public void searchCustomerAll() throws Exception {
         CustomerDetailDto customerDetailDto = new CustomerDetailDto();
 
         customerDetailDto.setFirstName("John");
@@ -40,12 +41,26 @@ class CustomerControllerTest {
         when(customerService.getAllCustomers())
                 .thenReturn(List.of(customerDetailDto));
 
-        var result = mockMvc.perform(
+        mockMvc.perform(
                 get("/api/customers"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.[0].firstName",
                                     Matchers.equalTo("John")));
 
         verify(customerService, times(1)).getAllCustomers();
+    }
+
+    @Test
+    public void getCustomerById() throws Exception {
+        when(customerService.getCustomerById(any()))
+                .thenThrow(new LibraryApplicationException("Customer not found. ID: 1"));
+
+        mockMvc.perform(
+                        get("/api/customers/1"))
+                .andExpect(status().is4xxClientError())
+                .andExpect(jsonPath("$.error",
+                        Matchers.equalTo("Customer not found. ID: 1")));
+
+        verify(customerService, times(1)).getCustomerById(any());
     }
 }

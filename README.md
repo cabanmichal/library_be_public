@@ -1,5 +1,9 @@
 # Library backend
 
+## Week 8
+### Objective
+* Introduce tests
+
 ## Week 7
 ### Objective
 * Introduce Security concepts

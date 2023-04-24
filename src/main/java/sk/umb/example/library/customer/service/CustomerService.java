@@ -79,7 +79,7 @@ public class CustomerService {
         Optional<CustomerEntity> customer = customerRepository.findById(customerId);
 
         if (customer.isEmpty()) {
-            throw new IllegalArgumentException("Customer not found. ID: " + customerId);
+            throw new LibraryApplicationException("Customer not found. ID: " + customerId);
         }
 
         return customer.get();
