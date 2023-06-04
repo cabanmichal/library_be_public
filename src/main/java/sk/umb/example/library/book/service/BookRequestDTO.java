@@ -1,13 +1,13 @@
 package sk.umb.example.library.book.service;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class BookRequestDTO {
     private String author;
     private String title;
     private String isbn;
     private Integer count;
-    private ArrayList<Long> categoryIds;
+    private List<Long> categoryIds;
     private BookStatus status;
 
     public String getAuthor() {
@@ -42,11 +42,11 @@ public class BookRequestDTO {
         this.count = count;
     }
 
-    public ArrayList<Long> getCategoryIds() {
+    public List<Long> getCategoryIds() {
         return categoryIds;
     }
 
-    public void setCategoryIds(ArrayList<Long> categoryIds) {
+    public void setCategoryIds(List<Long> categoryIds) {
         this.categoryIds = categoryIds;
     }
 
