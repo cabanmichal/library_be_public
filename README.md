@@ -1,5 +1,32 @@
 # Library backend
 
+## Week 3
+### Objective
+* Docker and docker compose introduction
+  * Explain docker and docker usecase 
+  * Install docker on local machine
+  * Test docker installation
+    * > ```docker run hello-world```
+  * Install docker-compose on local machine
+* Introduce database IDE
+  * Install DBeaver
+  * Connect DBeaver to docker database instance. 
+
+![DBeaver Postgres](images/dbeaver-postgres.png)
+  
+![DBeaver Config](images/dbeaver-config.png)
+
+### Prerequisites
+* None
+
+### Homework
+* Install docker and docker-compose on a local machine
+
+#### Homework acceptance criteria
+* docker and docker compose is running on a local machine
+* Postgres DB is running in Docker using docker-compose
+* DBeaver can connect to Docker Postgress instance
+
 ## Week 2
 
 ### Objective
