@@ -1,17 +1,7 @@
 package sk.umb.example.library.category.service;
 
 
-public class CategoryDetailDTO {
-    Long id;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
+public class CategoryRequestDto {
     private String name;
 
     public String getName() {
