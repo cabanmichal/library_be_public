@@ -1,5 +1,65 @@
 # Library backend
 
+## Week 4
+
+### Objective
+* Introduce persistence layer
+* Explain Spring Repository
+* Explain JPA and Hibernate
+* Connect application to DB using Hibernate
+
+### Prerequisites
+Docker is up and running (week3 homework)
+
+### Homework
+####  Using Customer and Address persistence as an example, implement persistence for following functionalities:
+
+**Category**
+
+```java 
+public class CategoryEntity {
+//  All fields from CategoryDetailDto
+    
+}
+```
+
+**Book**
+
+```java 
+
+public class BookEntity {
+//  All fields from BookDetailDto
+  
+    // Unidirectional mapping
+    @ManyToMany
+    @JoinTable(name="category_book", 
+               joinColumns=@JoinColumn(name="book_id"), 
+               inverseJoinColumns=@JoinColumn(name="category_id"))
+    private Set<Category> categories;
+}
+```
+
+**Borrowing**
+
+```java 
+public class BorrowingEntity {
+//  All fields from BorrowingDetailDto
+
+  // Unidirectional mapping
+  @ManyToOne
+  private CustomerEntity customer;
+
+  // Unidirectional mapping
+  @ManyToOne
+  private BookEntity bookEntity;
+}
+```
+
+#### Homework acceptance criteria
+* All code has to be present in a repository
+* Application must be compilable and running
+
+
 ## Week 3
 ### Objective
 * Docker and docker compose introduction
