@@ -1,13 +1,13 @@
 package sk.umb.example.library.borrowing.service;
 
-import sk.umb.example.library.book.service.BookDetailDTO;
+import sk.umb.example.library.book.service.BookDetailDto;
 import sk.umb.example.library.customer.service.CustomerDetailDto;
 
 import java.util.Date;
 
 public class BorrowingDetailDTO {
     private Long id;
-    private BookDetailDTO bookDetailDTO;
+    private BookDetailDto bookDetailDTO;
     private CustomerDetailDto customerDetailDTO;
     private Date date;
 
@@ -19,11 +19,11 @@ public class BorrowingDetailDTO {
         this.id = id;
     }
 
-    public BookDetailDTO getBookDetailDTO() {
+    public BookDetailDto getBookDetailDTO() {
         return bookDetailDTO;
     }
 
-    public void setBookDetailDTO(BookDetailDTO bookDetailDTO) {
+    public void setBookDetailDTO(BookDetailDto bookDetailDTO) {
         this.bookDetailDTO = bookDetailDTO;
     }
 

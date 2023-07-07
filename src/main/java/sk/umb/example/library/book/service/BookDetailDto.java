@@ -2,13 +2,22 @@ package sk.umb.example.library.book.service;
 
 import java.util.List;
 
-public class BookRequestDTO {
+public class BookDetailDto {
+    private Long id;
     private String author;
     private String title;
     private String isbn;
     private Integer count;
     private List<Long> categoryIds;
     private BookStatus status;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getAuthor() {
         return author;
